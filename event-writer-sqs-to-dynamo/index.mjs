@@ -22,6 +22,7 @@ export async function handler(event) {
     };
 
     try {
+      fibonacci(Math.floor(Math.random() * 4) + 36);
       const data = await ddb.put(params).promise();
       console.log("Success:", data);
     } catch (err) {
@@ -30,4 +31,13 @@ export async function handler(event) {
   }
 
   return "Done";
+}
+
+// Fibonacci function
+function fibonacci(n) {
+  if (n < 2) {
+    return n;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
 }

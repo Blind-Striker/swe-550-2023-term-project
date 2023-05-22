@@ -20,7 +20,7 @@ var eventNames = [
 ];
 
 // Number of messages to send
-var numberOfMessages = 5; // Change this to the desired number of messages
+var numberOfMessages = 10; // Change this to the desired number of messages
 
 for (let i = 0; i < numberOfMessages; i++) {
   // Create publish parameters

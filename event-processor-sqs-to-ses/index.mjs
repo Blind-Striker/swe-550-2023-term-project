@@ -6,7 +6,7 @@ export async function handler(event) {
 
   for (let record of event.Records) {
     let body = JSON.parse(record.body);
-    
+
     let emailParams = {
       Source: "denizirgin@gmail.com", // replace with your verified SES email
       Destination: {
@@ -29,12 +29,23 @@ export async function handler(event) {
     };
 
     try {
-      let data = await ses.sendEmail(emailParams).promise();
-      console.log("Email sent:", data);
+      // Create artificial CPU bound work
+      fibonacci(Math.floor(Math.random() * 4) + 36);
+
+      console.log("Email sent:", emailParams);
     } catch (err) {
       console.error("Failed to send email:", err);
     }
   }
 
   return "Done";
+}
+
+// Fibonacci function
+function fibonacci(n) {
+  if (n < 2) {
+    return n;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
 }
